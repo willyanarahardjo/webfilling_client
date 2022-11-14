@@ -10,7 +10,7 @@ function App() {
   const [formData, setFormData] = useState(
     {
       name: "",
-      phone: "",
+      telp: "",
     }
   );
 
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(()=> {
     //mengambil data
-    axios.get('https://jsonplaceholder.typicode.com/users').then(res => {
+    axios.get('http://localhost:3000/contacts').then(res => {
       console.log(res.data);
       setContacts(res?.data ?? []);
     });
@@ -37,7 +37,7 @@ function App() {
     e.preventDefault();
     let data = [...contacts];
 
-    if (formData.name === "" || formData.phone === "") {
+    if (formData.name === "" || formData.telp === "") {
       return alert("data tdk lengkap");
     }
 
@@ -45,22 +45,22 @@ function App() {
       data.forEach((contact)=> {
         if(contact.id === isUpdate.id) {
           contact.name = formData.name;
-          contact.phone = formData.phone;
+          contact.telp = formData.telp;
         }
 
-      let updatedData = {id: uid(), name:formData.name, phone: formData.phone}
+      let updatedData = {id: uid(), name:formData.name, telp: formData.telp}
 
-      axios.put(`https://jsonplaceholder.typicode.com/users/${isUpdate.id}`,updatedData).then(res => {
+      axios.put(`http://localhost:3000/contacts/${isUpdate.id}`,updatedData).then(res => {
         alert("Berhasil update data")
       })
 
       });
 
     } else {
-      let newData = {id: uid(), name:formData.name, phone: formData.phone}
+      let newData = {id: uid(), name:formData.name, telp: formData.telp}
       data.push(newData);
 
-      axios.post('https://my-json-server.typicode.com/typicode/demo/profile', newData).then(res => {
+      axios.post('http://localhost:3000/contacts', newData).then(res => {
         alert("Berhasil Menyimpan Data");
       })
     }
@@ -68,13 +68,13 @@ function App() {
     //push
     setIsUpdate({id: null, status: false});
     setContacts(data);
-    setFormData({name:"", phone:""});
+    setFormData({name:"", telp:""});
   }
 
   function handleEdit(id) {
     let data=[...contacts];
     let foundData = data.find((contact)=> contact.id === id);
-    setFormData({name: foundData.name, phone: foundData.phone});
+    setFormData({name: foundData.name, telp: foundData.telp});
     setIsUpdate({id: id, status: true});
   }
 
@@ -84,7 +84,7 @@ function App() {
 
     setContacts(filteredData);
     
-    axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`,filteredData).then(res => {
+    axios.delete(`http://localhost:3000/contacts/${id}`,filteredData).then(res => {
       alert("Berhasil menghapus data");
     });
   }
@@ -109,8 +109,8 @@ function App() {
             type="text"
             className="form-control"
             onChange={handleChange}
-            value={formData.phone}
-            name="phone" />
+            value={formData.telp}
+            name="telp" />
         </div>
         <div>
           <button type="submit" className="btn btn-primary w-100 mt-3">
