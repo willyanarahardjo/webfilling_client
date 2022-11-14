@@ -14,7 +14,7 @@ export default function List({ data,handleEdit,handleDelete }) {
                   <button onClick={()=> handleDelete(contact.id)} className="btn btn-sm btn-link">Del</button>
                 </div>
               </div>
-              <p className="mb-1">{contact.phone}</p>
+              <p className="mb-1">{contact.telp}</p>
             </div>
           )
         })
