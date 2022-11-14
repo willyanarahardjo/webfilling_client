@@ -21,7 +21,7 @@ function App() {
 
   useEffect(()=> {
     //mengambil data
-    axios.get('http://localhost:3000/contacts').then(res => {
+    axios.get('https://my-json-server.typicode.com/typicode/demo/profile').then(res => {
       console.log(res.data);
       setContacts(res?.data ?? []);
     });
@@ -50,7 +50,7 @@ function App() {
 
       let updatedData = {id: uid(), name:formData.name, telp: formData.telp}
 
-      axios.put(`http://localhost:3000/contacts/${isUpdate.id}`,updatedData).then(res => {
+      axios.put(`https://my-json-server.typicode.com/typicode/demo/profile/${isUpdate.id}`,updatedData).then(res => {
         alert("Berhasil update data")
       })
 
@@ -60,7 +60,7 @@ function App() {
       let newData = {id: uid(), name:formData.name, telp: formData.telp}
       data.push(newData);
 
-      axios.post('http://localhost:3000/contacts', newData).then(res => {
+      axios.post('https://my-json-server.typicode.com/typicode/demo/profile', newData).then(res => {
         alert("Berhasil Menyimpan Data");
       })
     }
@@ -84,7 +84,7 @@ function App() {
 
     setContacts(filteredData);
     
-    axios.delete(`http://localhost:3000/contacts/${id}`,filteredData).then(res => {
+    axios.delete(`https://my-json-server.typicode.com/typicode/demo/profiles/${id}`,filteredData).then(res => {
       alert("Berhasil menghapus data");
     });
   }
