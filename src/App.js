@@ -98,6 +98,7 @@ function App() {
           <label htmlFor="">Name</label>
           <input
             type="text"
+            id="name"
             className="form-control"
             onChange={handleChange}
             value={formData.name}
@@ -107,6 +108,7 @@ function App() {
           <label htmlFor="">No. Telp</label>
           <input
             type="text"
+            id="telp"
             className="form-control"
             onChange={handleChange}
             value={formData.telp}
