@@ -60,9 +60,7 @@ function App() {
       let newData = {id: uid(), name:formData.name, telp: formData.telp}
       data.push(newData);
 
-      axios.post('http://localhost:3000/contacts', newData).then(res => {
-        alert("Berhasil Menyimpan Data");
-      })
+      axios.post('http://localhost:3000/contacts', newData)
     }
 
     //push
