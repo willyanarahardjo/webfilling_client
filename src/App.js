@@ -115,7 +115,7 @@ function App() {
             name="telp" />
         </div>
         <div>
-          <button type="submit" className="btn btn-primary w-100 mt-3">
+          <button id="save" type="submit" className="btn btn-primary w-100 mt-3">
             Save
           </button>
         </div>
